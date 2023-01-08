@@ -42,3 +42,6 @@
                         ↳ Scaffold
 -- geeksforgeeks.org/scaffold-class-in-flutter-with-examples/
 -- Ctrl + . => is quite a useful command for getting suggestions
+=======================================
+-- Navigator is anonymous route, because we didn't tell where to go i.e. no info was passed
+-- It's quite different from named routes

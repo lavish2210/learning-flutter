@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:learningdart/firebase_options.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -35,65 +33,61 @@ class _LoginViewState extends State<LoginView> {
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: FutureBuilder(
-        future: Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform,
-        ),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              return Column(
-                children: [
-                  TextField(
-                    controller: _email,
-                    autocorrect: false,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter Email Here',
-                    ),
-                  ),
-                  TextField(
-                    controller: _password,
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter Password Here',
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      // We need to use text editing controllers to get the text from the text fields
-                      // We can use the TextEditingController class to create a controller
+      body: Column(
+        children: [
+          TextField(
+            controller: _email,
+            autocorrect: false,
+            keyboardType: TextInputType.emailAddress,
+            decoration: const InputDecoration(
+              hintText: 'Enter Email Here',
+            ),
+          ),
+          TextField(
+            controller: _password,
+            obscureText: true,
+            enableSuggestions: false,
+            autocorrect: false,
+            decoration: const InputDecoration(
+              hintText: 'Enter Password Here',
+            ),
+          ),
+          TextButton(
+            onPressed: () async {
+              // We need to use text editing controllers to get the text from the text fields
+              // We can use the TextEditingController class to create a controller
 
-                      final email = _email.text;
-                      final password = _password.text;
-                      try {
-                        final credential = await FirebaseAuth.instance
-                            .signInWithEmailAndPassword(
-                          email: email,
-                          password: password,
-                        );
-                        print(credential);
-                      } on FirebaseAuthException catch (e) {
-                        // FirebaseAuthException is runtime type of e
-                        if (e.code == 'user-not-found') {
-                          print('No user found for that email');
-                        } else if (e.code == 'wrong-password') {
-                          print('Wrong password provided for that user');
-                        }
-                      } catch (e) {
-                        print('Some other Error');
-                      }
-                    },
-                    child: const Text('Login'),
-                  ),
-                ],
-              );
-            default:
-              return Text('Loading');
-          }
-        },
+              final email = _email.text;
+              final password = _password.text;
+              try {
+                final credential =
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
+                print(credential);
+              } on FirebaseAuthException catch (e) {
+                // FirebaseAuthException is runtime type of e
+                if (e.code == 'user-not-found') {
+                  print('No user found for that email');
+                } else if (e.code == 'wrong-password') {
+                  print('Wrong password provided for that user');
+                }
+              } catch (e) {
+                print('Some other Error');
+              }
+            },
+            child: const Text('Login'),
+          ),
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/register',
+                  (route) => false,
+                );
+              },
+              child: const Text('Not registered? Register here!')),
+        ],
       ),
     );
   }
