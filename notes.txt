@@ -1,0 +1,44 @@
+-- Flutter is also having 
+    1. keywords which are reserved words just like in c++
+    2. Data Types like int, double, String
+    3. constant variables just like c++
+-- Its idea behind working is similar to that of react, it only reloads those components which were changed using
+    code hierarchy
+-- We can write variables in string using $ symbol, also we can use arrow functions in it
+-- One interesting thing in Dart is Sound Null Safety => changes potential runtime errors into edit-time analysis
+    errors, by flagging when any non-nullable variable hasn’t been initialized with a non-null value or is being assigned a null.
+    You can specify that a type of a variable is nullable (e.g. int? i), and only then can they contain either a null or a 
+    value of the defined type.
+-- For telling that this variable can contain null values also, ? is neccesary; Any data type can contain null values provided it has '?' as suffix 
+-- Cherry Picking NULL values -> ?? operator is an infix operator and works like || operartor of c++
+    eg. var firstNonNullValue = firstName ?? middleName ?? lastName;
+-- Null-aware assignment operartor -> '??=' operator; if left value is null then it will assign that as the right value
+-- Conditional Invocation -> Useful when we have to access its members
+    older method => first of all check whether it is null or not and then access its members
+    new method => Use '?.' operator; eg. names?.add('Foo');       
+                                        var length = names?.length; // if names is null then it will assign length as null else assign its value
+                                        if we don't want to make length null if names is null then use ?? operartor
+                                        length = name?.length ?? 0;
+-- Factory Constructor - quite a new way of initializing objects; see documentation - https://dart.dev/guides/language/language-tour#factory-constructors
+-- We can override operartors as well here - but remember that if we override it we have to modify hashcode as well
+-- Extensions in Flutter - Useful for overriding default methods; https://medium.com/aubergine-solutions/easily-understand-darts-extension-methods-for-flutter-2b3d3d3c698f 
+-- Data Stream is also very interesting, there are seperate functions for it as well
+-- Generator functions compute things on the go and then return them, it is done using sync*    
+================================================
+-- There is "scrcpy" to mirror a real android device on the screen https://github.com/Genymobile/scrcpy
+-- For this to run first of all we need ADB(Android Debug Bridge)
+================================================
+-- MaterialApp is a widget that introduces a number of widgets Navigator, Theme that are required to 
+   build a material design app. Scaffold Widget is used under MaterialApp, it gives you many basic 
+   functionalities, like AppBar, BottomNavigationBar, Drawer, FloatingActionButton, etc.
+-- Scaffold is a class in flutter which provides many widgets or we can say APIs like Drawer, Snack-Bar, Bottom-Navigation-Bar, Floating-Action-Button, App-Bar, etc. 
+   Scaffold will expand or occupy the whole device screen. It will occupy the available space.
+-- The class Hierarchy is as follows:
+    Object
+        ↳ Diagnosticable
+            ↳ Diagnosticable Tree
+                ↳ Widget
+                    ↳ StateFul Widget
+                        ↳ Scaffold
+-- geeksforgeeks.org/scaffold-class-in-flutter-with-examples/
+-- Ctrl + . => is quite a useful command for getting suggestions

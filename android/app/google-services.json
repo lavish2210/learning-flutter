@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "943323910456",
+    "project_id": "learning-flutter-lavish",
+    "storage_bucket": "learning-flutter-lavish.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943323910456:android:db78f17eb90cbebba231cd",
+        "android_client_info": {
+          "package_name": "com.example.learningdart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943323910456-t1jhe22ukbfpeblacommplr1bruafc6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL00sghRxvKlIuBVtKYn9BKJx3d5vV-Ps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943323910456-t1jhe22ukbfpeblacommplr1bruafc6v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
