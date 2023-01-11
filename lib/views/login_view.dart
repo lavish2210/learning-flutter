@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer' as devtools show log;
+import '../constants/routes.dart';
+import '../utilities/show_error_dialog.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -65,16 +68,35 @@ class _LoginViewState extends State<LoginView> {
                   email: email,
                   password: password,
                 );
-                print(credential);
+                devtools.log('Credential: $credential');
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  notesRoute,
+                  (route) => false,
+                );
               } on FirebaseAuthException catch (e) {
                 // FirebaseAuthException is runtime type of e
                 if (e.code == 'user-not-found') {
-                  print('No user found for that email');
+                  await showErrorDialog(
+                    context,
+                    'No user found for that email',
+                  );
                 } else if (e.code == 'wrong-password') {
-                  print('Wrong password provided for that user');
+                  await showErrorDialog(
+                    context,
+                    'Wrong password provided',
+                  );
+                } else {
+                  await showErrorDialog(
+                    context,
+                    'Error : ${e.code}',
+                  );
                 }
               } catch (e) {
-                print('Some other Error');
+                await showErrorDialog(
+                  context,
+                  'Some other Error, contact Developer',
+                );
+                devtools.log(e.toString());
               }
             },
             child: const Text('Login'),
@@ -82,7 +104,7 @@ class _LoginViewState extends State<LoginView> {
           TextButton(
               onPressed: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/register/',
+                  registerRoute,
                   (route) => false,
                 );
               },

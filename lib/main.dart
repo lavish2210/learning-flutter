@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:learningdart/constants/routes.dart';
 import 'package:learningdart/views/login_view.dart';
 import 'package:learningdart/views/register_view.dart';
 import 'package:learningdart/views/verify_email_view.dart';
@@ -34,8 +35,9 @@ void main() async {
       ),
       home: const HomePage(),
       routes: {
-        '/login/': (context) => const LoginView(),
-        '/register/': (context) => const RegisterView(),
+        loginRoute: (context) => const LoginView(),
+        registerRoute: (context) => const RegisterView(),
+        notesRoute: ((context) => const NotesView()),
       },
     ),
   );
@@ -56,14 +58,14 @@ class HomePage extends StatelessWidget {
             final user = FirebaseAuth.instance.currentUser;
             if (user != null) {
               if (user.emailVerified) {
-                print("You are verified");
+                devtools.log("You are verified");
                 return const NotesView();
               } else {
-                print("You are not verified");
+                devtools.log("You are not verified");
                 return const VerifyEmailView();
               }
             } else {
-              print("You are not logged in");
+              devtools.log("You are not logged in");
               return const LoginView();
             }
           // We can't push something in the future builder, that's why error is coming
@@ -104,7 +106,7 @@ class _NotesViewState extends State<NotesView> {
                   if (shouldLogout) {
                     await FirebaseAuth.instance.signOut();
                     Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/login/',
+                      loginRoute,
                       (_) => false,
                     );
                   }

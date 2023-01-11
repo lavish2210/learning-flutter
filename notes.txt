@@ -45,3 +45,5 @@
 =======================================
 -- Navigator is anonymous route, because we didn't tell where to go i.e. no info was passed
 -- It's quite different from named routes
+=======================================
+-- We can also use overlays for displaying persistent dialogs rather than using Navigator
