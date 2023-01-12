@@ -47,3 +47,7 @@
 -- It's quite different from named routes
 =======================================
 -- We can also use overlays for displaying persistent dialogs rather than using Navigator
+=======================================
+-- We shouldn't expose our Firebase User to the UI, and we need some kind of abstraction
+-- If we write @immtable above class name then it states that contents of this class and its subclass can't change
+-- Factory constructor (learn more about it)
