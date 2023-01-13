@@ -5,7 +5,6 @@ import 'package:learningdart/views/login_view.dart';
 import 'package:learningdart/views/notes_view.dart';
 import 'package:learningdart/views/register_view.dart';
 import 'package:learningdart/views/verify_email_view.dart';
-import 'firebase_options.dart';
 import 'dart:developer' as devtools show log;
 
 void main() async {

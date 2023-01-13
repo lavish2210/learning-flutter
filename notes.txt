@@ -51,3 +51,7 @@
 -- We shouldn't expose our Firebase User to the UI, and we need some kind of abstraction
 -- If we write @immtable above class name then it states that contents of this class and its subclass can't change
 -- Factory constructor (learn more about it)
+=======================================
+-- There are 3 types of tests - Unit => testing a unit - the smallest piece of code that can be logically isolated in a system
+    ,Widget => These are end-to-end tests for the working of our widget like login_screen -> AuthService -> AuthProvider -> FirebaseService -> FirebaseBackend .... so this end-to-end
+    ,Integration tests => It checks that there is no ui involved in end-to-end work
