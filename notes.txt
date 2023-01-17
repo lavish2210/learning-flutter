@@ -57,3 +57,5 @@
     ,Integration tests => It checks that there is no ui involved in end-to-end work
 =======================================
 -- CRUD -> Create, Read, Update and Delete
+=======================================
+-- NotesService should be singleton i.e. it must be instantiated only once in the entire application
