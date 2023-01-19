@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>943323910456-ovgjg5dhmh7m3ngotivr9cb2lub7dk4m.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.943323910456-ovgjg5dhmh7m3ngotivr9cb2lub7dk4m</string>
+	<key>API_KEY</key>
+	<string>AIzaSyANnOGQPeb6dPAQAEVPQjohjNinn-wT5Pc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>943323910456</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.learningdart</string>
+	<key>PROJECT_ID</key>
+	<string>learning-flutter-lavish</string>
+	<key>STORAGE_BUCKET</key>
+	<string>learning-flutter-lavish.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:943323910456:ios:09c32c0927cb75b6a231cd</string>
+</dict>
+</plist>

@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:learningdart/services/auth/auth_exceptions.dart';
-import 'package:learningdart/services/auth/auth_services.dart';
-import 'dart:developer' as devtools show log;
-import '../constants/routes.dart';
-import '../utilities/show_error_dialog.dart';
+import 'package:mynotes/constants/routes.dart';
+import 'package:mynotes/services/auth/auth_exceptions.dart';
+import 'package:mynotes/services/auth/auth_service.dart';
+import 'package:mynotes/utilities/show_error_dialog.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+  const LoginView({Key? key}) : super(key: key);
 
   @override
   State<LoginView> createState() => _LoginViewState();
 }
 
 class _LoginViewState extends State<LoginView> {
-  // late keyword is when currently variable is not having any value but I promise that we will assign value to it later
   late final TextEditingController _email;
   late final TextEditingController _password;
 
@@ -41,10 +39,11 @@ class _LoginViewState extends State<LoginView> {
         children: [
           TextField(
             controller: _email,
+            enableSuggestions: false,
             autocorrect: false,
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
-              hintText: 'Enter Email Here',
+              hintText: 'Enter your email here',
             ),
           ),
           TextField(
@@ -53,22 +52,18 @@ class _LoginViewState extends State<LoginView> {
             enableSuggestions: false,
             autocorrect: false,
             decoration: const InputDecoration(
-              hintText: 'Enter Password Here',
+              hintText: 'Enter your password here',
             ),
           ),
           TextButton(
             onPressed: () async {
-              // We need to use text editing controllers to get the text from the text fields
-              // We can use the TextEditingController class to create a controller
-
               final email = _email.text;
               final password = _password.text;
               try {
-                final credential = await AuthService.firebase().logIn(
+                await AuthService.firebase().logIn(
                   email: email,
                   password: password,
                 );
-                devtools.log('Credential: $credential');
                 final user = AuthService.firebase().currentUser;
                 if (user?.isEmailVerified ?? false) {
                   // user's email is verified
@@ -77,7 +72,7 @@ class _LoginViewState extends State<LoginView> {
                     (route) => false,
                   );
                 } else {
-                  // email is not verified
+                  // user's email is NOT verified
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     verifyEmailRoute,
                     (route) => false,
@@ -86,30 +81,31 @@ class _LoginViewState extends State<LoginView> {
               } on UserNotFoundAuthException {
                 await showErrorDialog(
                   context,
-                  'No user found for that email',
+                  'User not found',
                 );
               } on WrongPasswordAuthException {
                 await showErrorDialog(
                   context,
-                  'Wrong password provided',
+                  'Wrong credentials',
                 );
               } on GenericAuthException {
                 await showErrorDialog(
                   context,
-                  'Authentication Error',
+                  'Authentication error',
                 );
               }
             },
             child: const Text('Login'),
           ),
           TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  registerRoute,
-                  (route) => false,
-                );
-              },
-              child: const Text('Not registered? Register here!')),
+            onPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                registerRoute,
+                (route) => false,
+              );
+            },
+            child: const Text('Not registered yet? Register here!'),
+          )
         ],
       ),
     );

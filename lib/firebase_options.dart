@@ -25,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -57,13 +54,23 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAL00sghRxvKlIuBVtKYn9BKJx3d5vV-Ps',
-    appId: '1:943323910456:android:db78f17eb90cbebba231cd',
+    appId: '1:943323910456:android:d8421e5b0e41de33a231cd',
     messagingSenderId: '943323910456',
     projectId: 'learning-flutter-lavish',
     storageBucket: 'learning-flutter-lavish.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyANnOGQPeb6dPAQAEVPQjohjNinn-wT5Pc',
+    appId: '1:943323910456:ios:72a868dcfef8bc0da231cd',
+    messagingSenderId: '943323910456',
+    projectId: 'learning-flutter-lavish',
+    storageBucket: 'learning-flutter-lavish.appspot.com',
+    iosClientId: '943323910456-jatjbuq2jagito9dhvt1ohn5tn6e3nf7.apps.googleusercontent.com',
+    iosBundleId: 'se.pixolity.mynotes',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyANnOGQPeb6dPAQAEVPQjohjNinn-wT5Pc',
     appId: '1:943323910456:ios:09c32c0927cb75b6a231cd',
     messagingSenderId: '943323910456',
